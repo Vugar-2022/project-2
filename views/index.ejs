@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <style>
+      /* Center container */
+      .center-container {
+        text-align: center; /* center text and inline elements */
+        max-width: 800px; /* optional: limit width */
+        margin: 0 auto; /* center the container itself */
+      }
+
+      /* Button styling */
+      a.button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #007bff; /* Blue */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+
+      a.button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+
+      /* Images side by side with spacing */
+      .car-images img {
+        width: 300px;
+        margin: 10px;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <% if (user) { %>
+    <div class="center-container">
+      <h1>Welcome to your page, <%= user.username %>!</h1>
+      <a href="/add-your-car" class="button">Add Your Car</a>
+      <a href="/auth/sign-out" class="button">Sign Out</a>
+    </div>
+    <% } else { %>
+    <div class="center-container">
+      <h1>Welcome to the best car selling app</h1>
+
+      <div class="car-images">
+        <img src="/images/car-1.jpeg" alt="Car for sale" />
+        <img src="/images/car.jpeg" alt="Car for sale" />
+      </div>
+
+      <p>
+        Browse the best cars available for sale! We have all types of cars, from
+        compact sedans to luxury SUVs. Explore our collection and find your
+        dream car today!
+      </p>
+
+      <a href="/auth/sign-in" class="button">Sign In</a>
+      <a href="/auth/sign-up" class="button">Sign Up</a>
+    </div>
+    <% } %>
+  </body>
+</html>

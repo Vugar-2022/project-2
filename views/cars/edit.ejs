@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Car</title>
+    <style>
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Edit Car</h1>
+    <form action="/cars/<%= car._id %>?_method=PUT" method="POST">
+      <label>Name:</label>
+      <input
+        type="text"
+        name="brand"
+        value="<%= car.brand %>"
+        required
+      /><br /><br />
+
+      <label>Color:</label>
+      <input
+        type="text"
+        name="color"
+        value="<%= car.color %>"
+        required
+      /><br /><br />
+
+      <label>Milage:</label>
+      <input
+        type="number"
+        name="milage"
+        value="<%= car.milage %>"
+        required
+      /><br /><br />
+
+      <label>Good to drive?</label>
+      <input type="checkbox" name="isGoodToDrive" <%= car.isGoodToDrive ?
+      "checked" : "" %> /><br /><br />
+
+      <button type="submit">Update Car</button>
+    </form>
+
+    <!-- Back to Cars as a button -->
+    <a href="/cars" class="button">Back to Cars</a>
+  </body>
+</html>

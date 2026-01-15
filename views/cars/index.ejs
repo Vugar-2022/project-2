@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Index</title>
+
+    <style>
+      /* Button styling for links */
+      a.button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        background-color: #007bff; /* Blue button */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+      a.button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>All Cars</h1>
+
+    <% if (cars.length === 0) { %>
+    <p>No cars found. Add one below!</p>
+    <% } else { %>
+    <ul>
+      <% cars.forEach(car => { %>
+      <li>
+        <strong><%= car.brand %></strong> - <%= car.color %> - <%= car.milage %>
+        <% if(car.isGoodToDrive){ %> ✅ Available <% } else { %> ⚠ Needs MOT <%
+        } %>
+        <a href="/cars/<%= car._id %>">View</a>
+      </li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+    <hr />
+
+    <a href="/cars/new" class="button">Add New Car</a>
+
+    <% if (user) { %>
+    <a href="/auth/sign-out" class="button">Sign Out</a>
+    <% } else { %>
+    <a href="/auth/sign-in" class="button">Sign In</a>
+    <a href="/auth/sign-up" class="button">Sign Up</a>
+    <% } %>
+  </body>
+</html>

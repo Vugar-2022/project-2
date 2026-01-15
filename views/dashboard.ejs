@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <style>
+      /* Center everything in a block */
+      .center-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        gap: 20px; /* spacing between items */
+      }
+
+      h1 {
+        font-size: 2em;
+        color: #007bff;
+        margin: 0;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #28a745; /* green */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .button:hover {
+        background-color: #218838;
+      }
+
+      .sign-out {
+        background-color: #dc3545; /* red */
+      }
+
+      .sign-out:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome, <%= user.username %>!</h1>
+
+    <!-- Sign Out link -->
+    <a href="/auth/sign-out" style="margin-left: 20px">Sign Out</a>
+
+    <h2>Your Cars</h2>
+    <% if (cars.length === 0) { %>
+    <p>You haven't added any cars yet.</p>
+    <% } else { %>
+    <ul>
+      <% cars.forEach(car => { %>
+      <li>
+        <a href="/cars/<%= car._id %>">
+          <%= car.brand %> - <%= car.color %> - <%= car.milage %>
+        </a>
+        <a href="/cars/<%= car._id %>/edit">Edit</a>
+        <form
+          action="/cars/<%= car._id %>?_method=DELETE"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit" onclick="return confirm('Delete this car?')">
+            Delete
+          </button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+    <a href="/cars/new">➕ Add New Car</a>
+  </body>
+</html>

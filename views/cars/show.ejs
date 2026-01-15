@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= car.brand %> Show Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 60px auto; /* ⬅ centers block horizontally */
+        text-align: center;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 5px 10px;
+        margin-top: 5px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      .button:hover {
+        background-color: #0056b3;
+      }
+
+      .danger {
+        background-color: #dc3545;
+      }
+
+      .danger:hover {
+        background-color: #b52a37;
+      }
+
+      .secondary {
+        background-color: #6c757d;
+      }
+
+      .secondary:hover {
+        background-color: #545b62;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= car.brand %></h1>
+
+    <!-- Show car details dynamically -->
+    <p><strong>Color:</strong> <%= car.color %></p>
+    <p><strong>Milage:</strong> <%= car.milage %></p>
+
+    <% if(car.isGoodToDrive){ %>
+    <p style="color: green">This car is available for sale!</p>
+    <% } else { %>
+    <p style="color: red">This car needs to go for MOT!</p>
+    <% } %>
+
+    <form action="/cars/<%= car._id %>?_method=DELETE" method="post">
+      <button type="submit">Delete this car</button>
+    </form>
+
+    <a href="/cars/<%= car._id %>/edit" class="button">
+      Edit <%= car.brand %>
+    </a>
+
+    <br />
+    <a href="/cars">Back to Cars Page</a>
+  </body>
+</html>

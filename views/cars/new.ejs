@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Your Car</title>
+    <style>
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add your car here</h1>
+    <form action="/cars" method="POST">
+      <label>Brand:</label>
+      <input type="text" name="brand" required /><br /><br />
+
+      <label>Color:</label>
+      <input type="text" name="color" required /><br /><br />
+
+      <label>Milage:</label>
+      <input type="number" name="milage" required /><br /><br />
+
+      <label>Good to drive?</label>
+      <input type="checkbox" name="isGoodToDrive" /><br /><br />
+
+      <button type="submit">Add Car</button>
+    </form>
+
+    <!-- Back to Cars as a button -->
+    <a href="/cars" class="button">Back to Cars</a>
+  </body>
+</html>
